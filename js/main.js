@@ -16,21 +16,22 @@ function showOrHideNav() {
 }
 
 //Clicking On Menu
-menuBtn.onclick = () => showOrHideNav();  
+menuBtn.onclick = () => showOrHideNav();
 
 //Go To a Section
 let sections = document.querySelectorAll("nav .sections");
-sections.forEach(section => section.onclick = () => showOrHideNav() );
-
+sections.forEach((section) => (section.onclick = () => showOrHideNav()));
 
 //Mouse trail
 let landingSection = document.querySelector(".landing");
-landingSection.addEventListener("mousemove" , (mouse) => {
+landingSection.addEventListener("mousemove", (mouse) => {
    //Create and styling trail effect
    let trail = document.createElement("div");
    trail.className = "trail";
-   trail.style.cssText = `left: ${mouse.clientX - 5}px; top: ${mouse.clientY - 5}px;`;
-   
+   trail.style.cssText = `left: ${mouse.clientX - 5}px; top: ${
+      mouse.clientY - 5
+   }px;`;
+
    //Remove trail effect when Element's Animation finished
    trail.onanimationend = () => {
       trail.remove();
@@ -46,23 +47,31 @@ window.onload = () => {
 
    //Start Canvas
    try {
-   TagCanvas.Start('myCanvas');
-   } catch(e) {
-   // something went wrong, hide the canvas container
-   document.getElementById('myCanvasContainer').style.display = 'none';
+      TagCanvas.Start("myCanvas");
+   } catch (e) {
+      // something went wrong, hide the canvas container
+      document.getElementById("myCanvasContainer").style.display = "none";
    }
 };
 
 //Show Landing's contents when page is loaded
 showLandingContent = () => {
+   //Show Special Letters in the content of landing section
+   let specialLetters = document.querySelectorAll(".landing .logo");
+   specialLetters.forEach((letter) => {
+      letter.style.opacity = "1";
+      // letter.style.transform = "translateX(0)";
+   });
+
+   //Show the normal letters(dancing letters) in the content of landing section
    showLetters(document.querySelectorAll(".landing .letter"));
 
-   let contactBtn = document.querySelector(".landing .main-btn");
-   contactBtn.style.opacity = "1";
+   //Show Contact Btn After Showing the letters
+   document.querySelector(".landing .main-btn").style.opacity = "1";
 };
 
 //Waiting for 150ms then return promise
-sleep = () => new Promise(resolve => setTimeout(resolve , 150));
+sleep = () => new Promise((resolve) => setTimeout(resolve, 150));
 
 //Show The letters in the dancing-text
 showLetters = async (sectionLetters) => {
@@ -79,11 +88,10 @@ function focusOnSectionLink() {
    let mySkillsSection = document.querySelector(".my-skills");
    let myWorksSection = document.querySelector(".my-works");
    let contactSection = document.querySelector(".contact");
-   let sectionsLinks = document.querySelectorAll('.sections a');
-   
+   let sectionsLinks = document.querySelectorAll(".sections a");
 
    //Remove effects from all links
-   sectionsLinks.forEach(link => {
+   sectionsLinks.forEach((link) => {
       link.style.removeProperty("font-size");
       link.style.removeProperty("padding");
       link.style.removeProperty("color");
@@ -116,21 +124,21 @@ function focusOnSectionLink() {
       document.querySelector("[href='#contact']").style.padding = "19px";
       document.querySelector("[href='#contact']").style.color = "#05FDD8";
    }
-};
+}
 
 //Refresh effects while scrolling
-window.onscroll = () =>{
+window.onscroll = () => {
    focusOnSectionLink();
-   
+
    //check if mediaQuery exists and if the value for mediaQuery does not match 'reduce', return the scrollAnimation.
    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
    if (mediaQuery && !mediaQuery.matches) {
       throttle(handleScrollAnimation, 250);
    }
-}
+};
 
 //Contact with Whatsapp
-send_handle = () => window.open(`https://wa.me/201142014769?`, '_blank');
+send_handle = () => window.open(`https://wa.me/201142014769?`, "_blank");
 
 //Animation on scrolling
 let throttleTimer = false;
@@ -161,14 +169,20 @@ const handleScrollAnimation = () => {
    let myWorksSection = document.querySelector(".my-works");
    let contactSection = document.querySelector(".contact");
 
-   if(elementInView(aboutSection, 250)) {
-      document.querySelector(".about .image").classList.add("show-horizontal-elements");
-      document.querySelector(".about .details").classList.add("show-horizontal-elements");
+   if (elementInView(aboutSection, 250)) {
+      document
+         .querySelector(".about .image")
+         .classList.add("show-horizontal-elements");
+      document
+         .querySelector(".about .details")
+         .classList.add("show-horizontal-elements");
       showLetters(document.querySelectorAll(".about .letter"));
    }
    if (elementInView(mySkillsSection, 250)) {
       showLetters(document.querySelectorAll(".my-skills .letter"));
-      document.querySelector("#myCanvasContainer").classList.add("show-vertical-elements");
+      document
+         .querySelector("#myCanvasContainer")
+         .classList.add("show-vertical-elements");
    }
    if (elementInView(myWorksSection, 250)) {
       showLetters(document.querySelectorAll(".my-works .letter"));
@@ -177,28 +191,31 @@ const handleScrollAnimation = () => {
    if (elementInView(contactSection, 250)) {
       showLetters(document.querySelectorAll(".contact .letter"));
       document.querySelector(".contact p").style.opacity = "1";
-      document.querySelector(".contact-box h4").classList.add("show-horizontal-elements");
+      document
+         .querySelector(".contact-box h4")
+         .classList.add("show-horizontal-elements");
       showSocialContacts();
    }
-   
 };
 
 //Show Works one by one
 showWorks = async () => {
    let works = document.querySelectorAll(".works .work");
-   let worksLength = works.length
+   let worksLength = works.length;
    for (let i = 0; i < worksLength; i++) {
       works[i].classList.add("show-vertical-elements");
       await sleep();
    }
-}
+};
 
 //Show Social Contacts one by one
 showSocialContacts = async () => {
-   let showSocialContacts = document.querySelectorAll(".contact-box .social-contacts li");
-   let showSocialContactsLength = showSocialContacts.length
+   let showSocialContacts = document.querySelectorAll(
+      ".contact-box .social-contacts li"
+   );
+   let showSocialContactsLength = showSocialContacts.length;
    for (let i = 0; i < showSocialContactsLength; i++) {
       showSocialContacts[i].classList.add("show-vertical-elements");
       await sleep();
    }
-}
+};
