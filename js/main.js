@@ -28,9 +28,8 @@ landingSection.addEventListener("mousemove", (mouse) => {
    //Create and styling trail effect
    let trail = document.createElement("div");
    trail.className = "trail";
-   trail.style.cssText = `left: ${mouse.clientX - 5}px; top: ${
-      mouse.clientY - 5
-   }px;`;
+   trail.style.cssText = `left: ${mouse.clientX - 3.5}px; top: ${
+      mouse.clientY - 3.5}px;`;
 
    //Remove trail effect when Element's Animation finished
    trail.onanimationend = () => {
