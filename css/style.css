@@ -732,7 +732,7 @@ nav .social-icons a i:hover {
     font-size: 1.2rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 992px) {
     .about .content .details .main-btn {
         margin-left: auto;
         margin-right: auto;
