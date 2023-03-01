@@ -218,7 +218,7 @@ showSocialContacts = async () => {
       await sleep();
    }
 };
-=======
+
 // Start Menu button
 let menuBtn = document.querySelector("header .menu-btn");
 let firstSpan = document.querySelector("header .menu-btn span:first-child");
