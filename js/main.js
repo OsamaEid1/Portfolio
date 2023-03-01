@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Start Menu button
 let menuBtn = document.querySelector("header .menu-btn");
 let firstSpan = document.querySelector("header .menu-btn span:first-child");
@@ -441,4 +440,3 @@ showSocialContacts = async () => {
       await sleep();
    }
 };
->>>>>>> 0ebadb0 (foodie-master added)
