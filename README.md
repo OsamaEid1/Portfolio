@@ -11,4 +11,5 @@ This is my personal website which includes more details and projects.
 HML - CSS - JavaScript
 
 
-Inspired from https://jacekjeznach.com/
+
+_Inspired from https://jacekjeznach.com/_
