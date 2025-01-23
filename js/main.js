@@ -136,8 +136,6 @@ window.onscroll = () => {
    }
 };
 
-//Contact with Whatsapp
-send_handle = () => window.open(`https://wa.me/201142014769?`, "_blank");
 
 //Animation on scrolling
 let throttleTimer = false;

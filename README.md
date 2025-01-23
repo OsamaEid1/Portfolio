@@ -12,4 +12,4 @@ HML - CSS - JavaScript
 
 
 
-_Inspired from https://jacekjeznach.com/_
+_Inspired from jacekjeznach/_
